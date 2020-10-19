@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
+    android:background="@color/uibg"
     tools:context=".AddNote">
     <TextView
         android:id="@+id/text"
@@ -14,7 +15,7 @@
         android:textSize="40sp"
         android:layout_marginBottom="30dp"
         android:textColor="@android:color/black"
-        android:fontFamily="sans-serif-medium"/>
+        android:fontFamily="sans-serif-black"/>
 
     <LinearLayout
         android:layout_below="@+id/text"
@@ -24,12 +25,16 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/titlayout"
+            app:boxBackgroundColor="@android:color/white"
+            app:boxStrokeColor="@color/cardcolor"
+            app:boxStrokeWidth="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Title"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:textColor="@android:color/black"
                 android:id="@+id/tit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -41,6 +46,9 @@
             android:id="@+id/deslayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxBackgroundColor="@android:color/white"
+            app:boxStrokeColor="@color/cardcolor"
+            app:boxStrokeWidth="3dp"
             android:hint="Description"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
@@ -66,7 +74,7 @@
         app:rippleColor="@color/colorPrimaryDark"
         android:src="@drawable/ic_baseline_check_24"
         app:maxImageSize="40dp"
-        app:backgroundTint="@color/colorAccent"/>
+        app:backgroundTint="@color/fabcolor"/>
 
 
 

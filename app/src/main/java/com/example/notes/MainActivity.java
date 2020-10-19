@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         foradapter=new ArrayList<>();
         title=new ArrayList<>();
         descr=new ArrayList<>();
+        recyclerView.setHasFixedSize(true);
         SQLiteDatabase sql=this.openOrCreateDatabase("com.example.notes", Context.MODE_PRIVATE,null);
         sql.execSQL("CREATE TABLE IF NOT EXISTS notes (id INTEGER PRIMARY KEY, title VARCHAR , description VARCHAR)");
         Cursor c=sql.rawQuery("SELECT * FROM notes",null);
@@ -57,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             foradapter.add(new not(title.get(i),descr.get(i)));
         Log.i("adapter",foradapter.toString());
         adapter=new adapter(getApplicationContext(),foradapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(adapter);
         fab=findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

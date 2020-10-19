@@ -3,4 +3,10 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="cardcolor">#FFF176</color>
+    <color name="cardshadowcolor">#f39c12</color>
+    <color name="subtextcolor">#2c3e50</color>
+    <color name="fabcolor">#d35400</color>
+    <color name="uibg">#81D4FA</color>
 </resources>

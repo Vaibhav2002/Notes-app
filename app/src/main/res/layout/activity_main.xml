@@ -3,23 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="20dp"
-    android:background="#bdc3c7"
+    android:background="@color/uibg"
     android:id="@+id/rellayout"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
+        android:padding="20dp"
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Notes"
+        android:textColor="@android:color/black"
         android:fontFamily="sans-serif-black"
         android:textSize="40sp"
         android:layout_alignParentTop="true"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginLeft="10dp"
         android:id="@+id/recycle"
+        tools:listitem="@layout/note"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        app:spanCount="2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
@@ -31,12 +36,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="8dp"
         app:rippleColor="@color/colorPrimaryDark"
         android:src="@drawable/ic_baseline_add_24"
         app:maxImageSize="40dp"
-        app:backgroundTint="@color/colorAccent"/>
+        app:backgroundTint="@color/fabcolor"/>
 
 
 
