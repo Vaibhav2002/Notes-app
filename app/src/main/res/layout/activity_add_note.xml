@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     android:background="@color/uibg"
-    tools:context=".AddNote">
+    tools:context=".activities.AddNote">
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"

@@ -6,7 +6,7 @@
     android:background="@color/uibg"
     android:id="@+id/rellayout"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <TextView
         android:padding="20dp"

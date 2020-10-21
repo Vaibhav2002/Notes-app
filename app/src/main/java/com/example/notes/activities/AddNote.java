@@ -1,15 +1,15 @@
-package com.example.notes;
+package com.example.notes.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQueryBuilder;
-import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.notes.helperClasses.DatabaseHelper;
+import com.example.notes.R;
+import com.example.notes.not;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -31,8 +31,8 @@ public class AddNote extends AppCompatActivity {
         fab=findViewById(R.id.fab2);
         val=getIntent().getIntExtra("NO",-1);
         if(val!=-1) {
-            t.setText(MainActivity.title.get(val));
-            d.setText(MainActivity.descr.get(val));
+            t.setText(MainActivity.foradapter.get(val).getTitle());
+            d.setText(MainActivity.foradapter.get(val).getDescr());
         }
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,27 +55,16 @@ public class AddNote extends AppCompatActivity {
         String titleText=t.getText().toString().trim();
         String descText=d.getText().toString().trim();
         if(validate(titleText,descText)) {
-            SQLiteDatabase sql = this.openOrCreateDatabase("com.example.notes", Context.MODE_PRIVATE, null);
+            DatabaseHelper databaseHelper=new DatabaseHelper(getApplicationContext());
             if (val == -1) {
-                String sqL = "INSERT INTO notes (title,description) VALUES (?,?)";
-                SQLiteStatement sqLiteStatement = sql.compileStatement(sqL);
-                sqLiteStatement.bindString(1, titleText);
-                sqLiteStatement.bindString(2, descText);
-                sqLiteStatement.execute();
-                MainActivity.title.add(titleText);
-                MainActivity.descr.add(descText);
+                Log.i("Insert","Inserting");
+                databaseHelper.insertData(titleText,descText);
                 MainActivity.foradapter.add(new not(titleText, descText));
-                MainActivity.adapter.notifyItemInserted(MainActivity.title.size());
+                MainActivity.adapter.notifyItemInserted(MainActivity.foradapter.size());
 
             } else {
-                String sqL = "UPDATE notes SET title=?,description=? WHERE id=?";
-                SQLiteStatement sqLiteStatement = sql.compileStatement(sqL);
-                sqLiteStatement.bindString(1, titleText);
-                sqLiteStatement.bindString(2, descText);
-                sqLiteStatement.bindString(3, Integer.toString(val));
-                sqLiteStatement.execute();
-                MainActivity.title.set(val, titleText);
-                MainActivity.descr.set(val, descText);
+                Log.i("Update","Updating");
+                databaseHelper.updateData(titleText,descText,val);
                 MainActivity.foradapter.set(val, new not(titleText, descText));
                 MainActivity.adapter.notifyDataSetChanged();
             }
