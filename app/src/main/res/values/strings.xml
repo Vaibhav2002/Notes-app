@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Notes</string>
+    <string name="sort_ascending">Sort Ascending</string>
+    <string name="sort_descending">Sort descending</string>
+    <string name="original_order">Original Order</string>
 </resources>
